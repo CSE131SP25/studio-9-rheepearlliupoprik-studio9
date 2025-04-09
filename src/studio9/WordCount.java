@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import exam.codewriting.q1.Student;
 import support.cse131.NotYetImplementedException;
 
 public class WordCount {
@@ -28,11 +29,20 @@ public class WordCount {
 	 * @return a map which contains all of the distinct words as keys, each
 	 *         associated with the number of occurrences of the word
 	 */
+	
 	public static Map<String, Integer> countWords(List<String> words) {
-
-		// FIXME
-		throw new NotYetImplementedException();
-
+		
+	HashMap<String,Integer> WordCount = new HashMap<>(); 
+	 for (String X : words) { 
+		 if (WordCount.get(X) == null) {
+			 WordCount.put(X,1); 
+		 }
+		 else { 
+			 int count = WordCount.get(X) + 1; 
+			 WordCount.put(X, count); 
+		 }
+	 }
+	 return WordCount; 
 	}
 	
 	public static void main(String[] args) {
@@ -45,8 +55,11 @@ public class WordCount {
 		wordList.add("to");
 		wordList.add("be");
 		Map<String, Integer> words = countWords(wordList);
-		
-		//TODO: Write code that will iterate over the words map
-		//to verify its contents
-	}
+	
+		for (String Key : words.keySet()) { 
+			System.out.println( Key + words.get(Key)); 
+		}
+       
+    }
+
 }
